@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>  
+<html>  
+<head>  
+    <meta charset="UTF-8">  
+    <title>基于canvas超炫酷的流水灯效果</title>  
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        canvas{
+            border: 1px solid red;
+            width: 750px;
+            height: 543px;
+            background-image:url(background-image.jpg);
+        }
+
+    </style>
+</head>  
+<body  onselectstart="return false">  
+        <!-- 添加canvas标签，并加上红色边框以便于在页面上查看 -->  
+        
+        <p>要使用的图像：</p>
+        <img id="tulip" src="background-image.jpg" alt="The Tulip" />
+
+        <p>画布：</p>
+        <canvas id="myCanvas2" width="750" height="543" style="border:1px solid #d3d3d3;">
+        Your browser does not support the HTML5 canvas tag.
+        </canvas>
+
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript" src="canvas_demo.js"></script>  
+</body>  
+</html>  

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+// let text={
+//     a:1,
+//     b:2,
+//     c:function(){
+//         return function(){
+//            console.log(this.a);  //this代指全局变量，不是text
+//         }
+//     }
+// }
+
+// let c="gloal";
+
+// function test(o){
+//     // let c="test中的值";
+//     o=o+20;
+//     console.log(o);    //结果：仅能输出“test”作用域中的this.c
+// }
+
+// let  test=()=>{
+//     let c="test中的值";
+//     console.log(this.c);    //结果：仅能输出“test”作用域中的this.c
+// }
+
+
+// class aO{
+//     constructor(){
+//         this.a=10;
+//         this.b=this.a;
+//         this.c="local";
+//     }
+//     outPut(){
+//         // 
+//         test(this.c);
+//     }
+// }
+
+// let a1=new aO();
+// a1.outPut();
+// console.log(a1.c)
+/*
+*dateFormat：日期格式化函数
+*传入日期
+*
+*/
+const addZero = (date) => {
+    let temp = '00' + date.toString()
+    return temp.slice(temp.length - 2, temp.length + 1)
+}
+const timeFormate = (rawDate, fmt) =>{
+    const date = new Date(rawDate)
+    let dateFmt = fmt.toString()
+    let newDate = {
+        year: date.getFullYear(),
+        month: addZero(date.getMonth() + 1), //  注意：月份是从“0”开始计算！
+        day: addZero(date.getDate()),
+        hour: addZero(date.getHours()),
+        minu: addZero(date.getMinutes()),
+        secon: addZero(date.getSeconds())
+    }
+    if (dateFmt.match(/y+/gi)) {
+        if (dateFmt.match(/y+/gi)[0].length == 4) {
+            dateFmt = dateFmt.replace(/y+/gi, newDate.year.toString())
+        }else {
+            dateFmt = dateFmt.replace(/y+/gi, newDate.year.toString().slice(2,4))
+        }
+    }
+    if (dateFmt.search(/m+/gi) >= 0) {
+        dateFmt = dateFmt.replace(/m+/i, newDate.month)
+    }
+    if (dateFmt.search(/m+/gi) >= 0) {
+        dateFmt = dateFmt.replace(/m+/i, newDate.minu)
+    }
+    if (dateFmt.search(/d+/gi) >= 0) {
+        dateFmt = dateFmt.replace(/d+/gi, newDate.day)
+    }
+    if (dateFmt.search(/h+/gi) >= 0) {
+        dateFmt = dateFmt.replace(/h+/gi, newDate.hour)
+    }
+    if (dateFmt.search(/s+/gi) >= 0) {
+        dateFmt = dateFmt.replace(/s+/gi, newDate.secon)
+    }
+    return dateFmt
+}
+console.log(timeFormate('2018-09-06 20:15:30', 'YY/MM/DD/HH/MM/SS'))
+
+
+</script>
+</body>
+</html>
